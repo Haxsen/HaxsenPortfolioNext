@@ -23,8 +23,15 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Configure Git
+        run: |
+          git config --global user.name "haxsen"
+          git config --global user.email "hassaan.ali.lel@gmail.com"
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: out 
+          folder: out
+          token: ${{ secrets.PAT_GITHUB_TOKEN }}
+          repository-name: haxsen/HaxsenPortfolioNext
